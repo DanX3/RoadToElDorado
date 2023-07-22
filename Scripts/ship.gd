@@ -9,21 +9,12 @@ var target_direction: Vector2 = Vector2.RIGHT
 var target_speed: float = 0
 
 var docked: bool = false
-var player_in_boarding_area: Node2D = null
 
 
 func _ready():
-	$PlayerBoardingArea.body_entered.connect(on_body_entered)
-	$PlayerBoardingArea.body_exited.connect(on_body_exited)
-
+	$InteractableComponent.interacted.connect(on_interacted)
+	
 	rotation = get_orientation(velocity)
-
-
-func _unhandled_input(event: InputEvent):
-	if event.is_action_pressed("action") && player_in_boarding_area:
-		get_viewport().set_input_as_handled()
-		player_in_boarding_area.queue_free()
-		undock()
 
 
 func _physics_process(delta: float):
@@ -64,18 +55,16 @@ func get_orientation(direction: Vector2) -> float:
 
 func dock():
 	docked = true
+	target_speed = 0
+	velocity = Vector2.ZERO
 	$Camera2D.enabled = false
 
 
 func undock():
 	docked = false
 	$Camera2D.enabled = true
-	player_in_boarding_area = null
 
 
-func on_body_entered(body: Node2D):
-	player_in_boarding_area = body
-
-
-func on_body_exited(_body: Node2D):
-	player_in_boarding_area = null
+func on_interacted():
+	Callable(get_tree().get_first_node_in_group("player"), "queue_free").call_deferred()
+	undock()

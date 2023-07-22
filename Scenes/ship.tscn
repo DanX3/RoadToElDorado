@@ -1,13 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://d236ovvwvy01r"]
+[gd_scene load_steps=6 format=3 uid="uid://d236ovvwvy01r"]
 
 [ext_resource type="Script" path="res://Scripts/ship.gd" id="1_2pkmv"]
 [ext_resource type="Texture2D" uid="uid://bd37xulopduil" path="res://Assets/kenney_pirate-pack/PNG/Retina/Ships/ship (1).png" id="1_oubu0"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_qmegl"]
-radius = 30.0
+[ext_resource type="PackedScene" uid="uid://dvwr8pibhua8r" path="res://Scenes/interactable_component.tscn" id="2_pshxr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k6cvc"]
 radius = 128.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qmegl"]
+radius = 30.0
 
 [node name="Ship" type="CharacterBody2D"]
 collision_layer = 129
@@ -26,14 +27,13 @@ drag_top_margin = 0.3
 drag_right_margin = 0.3
 drag_bottom_margin = 0.3
 
+[node name="InteractableComponent" parent="." instance=ExtResource("2_pshxr")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent"]
+shape = SubResource("CircleShape2D_k6cvc")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_oubu0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qmegl")
-
-[node name="PlayerBoardingArea" type="Area2D" parent="."]
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBoardingArea"]
-shape = SubResource("CircleShape2D_k6cvc")
