@@ -13,7 +13,8 @@ func show_message():
 	var message_box = message_box_scene.instantiate() as MessageBox
 	add_child(message_box)
 	
-	message_box.display(message)
+	message_box.messages.append(message)
+	message_box.present()
 
 
 func on_interacted():

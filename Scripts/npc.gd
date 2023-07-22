@@ -11,5 +11,8 @@ func _ready():
 func on_interacted():
 	var message_box = message_box_scene.instantiate() as MessageBox
 	add_child(message_box)
-	
-	message_box.display("Ciao bello")
+
+	message_box.messages.append("Ciao bello")
+	message_box.messages.append("Guarda quanto parlo")
+
+	message_box.present()
