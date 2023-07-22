@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnmbscu2shweb"]
+
+[ext_resource type="Script" path="res://Scripts/inventory_slot.gd" id="1_80mmr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mom4t"]
+bg_color = Color(0.6, 0.6, 0.6, 0.329412)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[node name="InventorySlot" type="PanelContainer"]
+custom_minimum_size = Vector2(64, 64)
+theme_override_styles/panel = SubResource("StyleBoxFlat_mom4t")
+script = ExtResource("1_80mmr")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Control"]
+texture_filter = 1
+position = Vector2(30, 30)
+scale = Vector2(2, 2)

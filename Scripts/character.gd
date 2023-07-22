@@ -41,10 +41,6 @@ func _input(event):
 		fsm.set_state(AnimState.ROPE_PULL)
 
 
-func get_inventory() -> InventoryComponent:
-	return $InventoryComponent
-
-
 enum AnimState {
 	IDLE,
 	RUNNING,

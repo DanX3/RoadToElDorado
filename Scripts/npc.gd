@@ -7,5 +7,5 @@ func _ready():
 
 
 func on_interacted():
-	$QuestGiverComponent.inventory = get_tree().get_first_node_in_group("player").get_inventory()
+	$QuestGiverComponent.inventory = PlayerInventory
 	$QuestGiverComponent.interact()

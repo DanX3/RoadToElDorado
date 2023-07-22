@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://dx10ptboxwtsr"]
+[gd_scene load_steps=12 format=3 uid="uid://dx10ptboxwtsr"]
 
+[ext_resource type="PackedScene" uid="uid://ocba44xlt0dx" path="res://Scenes/inventory_ui.tscn" id="1_5hpuj"]
 [ext_resource type="TileSet" uid="uid://cbap12gqoij2l" path="res://Assets/map_tileset.tres" id="1_l7n36"]
 [ext_resource type="PackedScene" uid="uid://d236ovvwvy01r" path="res://Scenes/ship.tscn" id="2_5qe61"]
 [ext_resource type="PackedScene" uid="uid://b1u7jstr44p8f" path="res://Scenes/dock.tscn" id="3_tfxao"]
@@ -77,6 +78,8 @@ _data = {
 }
 
 [node name="Main" type="Node2D"]
+
+[node name="InventoryUi" parent="." instance=ExtResource("1_5hpuj")]
 
 [node name="WorldMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_l7n36")

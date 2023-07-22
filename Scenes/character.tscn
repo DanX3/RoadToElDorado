@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dw0tavlr5v8vn"]
+[gd_scene load_steps=17 format=3 uid="uid://dw0tavlr5v8vn"]
 
 [ext_resource type="Script" path="res://Scripts/character.gd" id="1_dukof"]
 [ext_resource type="Texture2D" uid="uid://b4f0sgi2gu1wv" path="res://Assets/Male adventurer/PNG/Parts/body.png" id="1_oadni"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://c87kd4e75prpy" path="res://Assets/kenney_pixel-platformer-industrial-expansion/Tiles/tile_0039.png" id="6_m087u"]
 [ext_resource type="Script" path="res://Scripts/FSM.gd" id="6_qw6wx"]
 [ext_resource type="PackedScene" path="res://Scenes/rope_segment.tscn" id="7_22s3t"]
-[ext_resource type="Script" path="res://Scripts/inventory_component.gd" id="9_khydh"]
 
 [sub_resource type="Animation" id="Animation_obexw"]
 length = 0.001
@@ -768,8 +767,5 @@ drag_bottom_margin = 0.3
 position = Vector2(0, 32)
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_b76eo")
-
-[node name="InventoryComponent" type="Node" parent="."]
-script = ExtResource("9_khydh")
 
 [connection signal="state_changed" from="FSM" to="." method="_on_fsm_state_changed"]
