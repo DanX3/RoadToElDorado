@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bu7wrotim7t75"]
+
+[ext_resource type="Script" path="res://Scripts/item.gd" id="1_5o83i"]
+[ext_resource type="Texture2D" uid="uid://l4f1jfwb26nj" path="res://Assets/genericItem_color_162.png" id="2_01ehr"]
+
+[resource]
+script = ExtResource("1_5o83i")
+id = "compass"
+name = "Compass"
+texture = ExtResource("2_01ehr")
