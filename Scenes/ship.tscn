@@ -7,11 +7,10 @@
 radius = 30.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k6cvc"]
-radius = 80.0
+radius = 128.0
 
 [node name="Ship" type="CharacterBody2D"]
-collision_layer = 128
-collision_mask = 0
+collision_layer = 129
 motion_mode = 1
 script = ExtResource("1_2pkmv")
 max_speed = 150.0
