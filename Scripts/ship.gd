@@ -12,7 +12,7 @@ func _ready():
 	rotation = get_orientation(velocity)
 
 
-func _process(delta: float):
+func _physics_process(delta: float):
 	var movement = get_movement_direction()
 	if movement.length_squared() > 0:
 		target_direction = movement.normalized()
