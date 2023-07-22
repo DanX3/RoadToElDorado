@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://1x2ua3u3iv14"]
+[gd_scene load_steps=14 format=3 uid="uid://1x2ua3u3iv14"]
 
 [ext_resource type="Script" path="res://Scripts/npc.gd" id="1_yb2xf"]
 [ext_resource type="PackedScene" uid="uid://dvwr8pibhua8r" path="res://Scenes/interactable_component.tscn" id="2_1rykq"]
 [ext_resource type="Texture2D" uid="uid://cra4ogm862wuk" path="res://Assets/Male person/PNG/Parts/body.png" id="3_6hvdv"]
+[ext_resource type="PackedScene" uid="uid://bv3ctkk440mx1" path="res://Scenes/quest_giver_component.tscn" id="3_xsc3e"]
 [ext_resource type="Texture2D" uid="uid://dak7a78kbe1fh" path="res://Assets/Male person/PNG/Parts/head.png" id="4_jv3f7"]
 [ext_resource type="Texture2D" uid="uid://5d3hl7jsbax5" path="res://Assets/Male person/PNG/Parts/arm.png" id="5_negw2"]
 [ext_resource type="Texture2D" uid="uid://gx3v3qdimf7b" path="res://Assets/Male person/PNG/Parts/leg.png" id="6_p6bqk"]
@@ -557,6 +558,11 @@ script = ExtResource("1_yb2xf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent"]
 shape = SubResource("CircleShape2D_s7sq8")
+
+[node name="QuestGiverComponent" parent="." instance=ExtResource("3_xsc3e")]
+introduction_messages = Array[String](["Ciao bello!", "Ce l'hai la chiave per El Dorado?"])
+quest_item_not_present_messages = Array[String](["Ma come no..."])
+quest_completed_messages = Array[String](["Ganza!"])
 
 [node name="Pivot" type="Node2D" parent="."]
 

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bv3ctkk440mx1"]
+
+[ext_resource type="Script" path="res://Scripts/quest_giver_component.gd" id="1_rttph"]
+
+[node name="QuestGiverComponent" type="Node"]
+script = ExtResource("1_rttph")

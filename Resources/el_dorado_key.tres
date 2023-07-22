@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="QuestItem" load_steps=2 format=3 uid="uid://bd7ss00kfcblp"]
+
+[ext_resource type="Script" path="res://Scripts/item.gd" id="1_wdnx5"]
+
+[resource]
+script = ExtResource("1_wdnx5")
+id = "el_dorado_key"
+name = "El Dorado Key"
