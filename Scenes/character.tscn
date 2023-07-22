@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dw0tavlr5v8vn"]
+[gd_scene load_steps=18 format=3 uid="uid://dw0tavlr5v8vn"]
 
 [ext_resource type="Script" path="res://Scripts/character.gd" id="1_dukof"]
 [ext_resource type="Texture2D" uid="uid://b4f0sgi2gu1wv" path="res://Assets/Male adventurer/PNG/Parts/body.png" id="1_oadni"]
@@ -7,7 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cbbw8w58vdqjq" path="res://Assets/Male adventurer/PNG/Parts/leg.png" id="4_kitj5"]
 [ext_resource type="Texture2D" uid="uid://c87kd4e75prpy" path="res://Assets/kenney_pixel-platformer-industrial-expansion/Tiles/tile_0039.png" id="6_m087u"]
 [ext_resource type="Script" path="res://Scripts/FSM.gd" id="6_qw6wx"]
-[ext_resource type="PackedScene" path="res://Scenes/rope_segment.tscn" id="7_22s3t"]
+[ext_resource type="PackedScene" uid="uid://bqx4kki1n0iva" path="res://Scenes/rope_segment.tscn" id="7_22s3t"]
+[ext_resource type="Script" path="res://Scripts/inventory_component.gd" id="9_khydh"]
 
 [sub_resource type="Animation" id="Animation_obexw"]
 length = 0.001
@@ -734,22 +735,23 @@ node_a = NodePath("../RopeSegment7")
 node_b = NodePath("../Hook")
 
 [node name="Hook" type="RigidBody2D" parent="Rope"]
-position = Vector2(0, 33.7907)
+position = Vector2(1.06066, -258.21)
 collision_layer = 2
 collision_mask = 2
-mass = 0.5
+mass = 0.2
+linear_damp = 1.0
 
 [node name="Sprite" type="Sprite2D" parent="Rope/Hook"]
-position = Vector2(0, -307)
+position = Vector2(-1.06066, -15.3497)
 rotation = 3.14159
 scale = Vector2(2, 2)
 texture = ExtResource("6_m087u")
 
 [node name="HookPoint" type="Marker2D" parent="Rope/Hook"]
-position = Vector2(0, -315)
+position = Vector2(-1.06066, -23.3497)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rope/Hook"]
-position = Vector2(0, -304)
+position = Vector2(-1.06066, -12.3497)
 shape = SubResource("CapsuleShape2D_ip3mq")
 
 [node name="FSM" type="Node" parent="."]
@@ -767,5 +769,8 @@ drag_bottom_margin = 0.3
 position = Vector2(0, 32)
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_b76eo")
+
+[node name="InventoryComponent" type="Node" parent="."]
+script = ExtResource("9_khydh")
 
 [connection signal="state_changed" from="FSM" to="." method="_on_fsm_state_changed"]

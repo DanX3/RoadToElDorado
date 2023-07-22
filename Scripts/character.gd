@@ -28,18 +28,24 @@ func _physics_process(delta):
 		fsm.set_state(AnimState.IDLE)
 	else:
 		fsm.set_state(AnimState.RUNNING)
-		
+	
+	if Input.is_action_pressed("rope"):
+		hook_force = hook_rotate_force * Vector2.ZERO.direction_to(hook.position).rotated(-0.5 * PI)
+		hook.apply_central_force(delta * hook_force)
+		queue_redraw()
 
+var hook_force = Vector2.ZERO
+
+func _draw():
+	draw_line(hook.position, hook.position + 100.0 * Vector2.ZERO.direction_to(hook.position).rotated(-0.5 * PI), Color.RED, 10.0)
 
 func _input(event):
 	if Input.is_action_just_pressed("rope"):
-		print("rope launch")
 		fsm.set_state(AnimState.ROPE_LAUNCH)
 	
 	if Input.is_action_just_released("rope"):
-		print("rope pull")
 		fsm.set_state(AnimState.ROPE_PULL)
-
+	
 
 enum AnimState {
 	IDLE,
@@ -50,7 +56,7 @@ enum AnimState {
 
 @onready var player = $Pivot/AnimationPlayer
 @onready var hook = $Rope/Hook
-@export var hook_rotate_force = 2000
+@export var hook_rotate_force = 20000
 
 func _on_fsm_state_changed(old_state, new_state):
 	match new_state:
@@ -60,8 +66,7 @@ func _on_fsm_state_changed(old_state, new_state):
 			player.play("run")
 		AnimState.ROPE_LAUNCH:
 			$Rope.show()
-			var hook_force = hook_rotate_force * hook.position.normalized().rotated(-0.5 * PI)
-			hook.add_constant_central_force(hook_force)
+			
 		AnimState.ROPE_PULL:
 			$Rope.hide()
 			hook.add_constant_central_force(Vector2.ZERO)
