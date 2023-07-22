@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://d236ovvwvy01r"]
+
+[ext_resource type="Texture2D" uid="uid://bd37xulopduil" path="res://Assets/kenney_pirate-pack/PNG/Retina/Ships/ship (1).png" id="1_oubu0"]
+[ext_resource type="Script" path="res://Scenes/ship.gd" id="1_tgssu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qmegl"]
+radius = 20.0
+
+[node name="Ship" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_tgssu")
+max_speed = 150.0
+linear_acceleration = 3.0
+angular_acceleration = 1.5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_oubu0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qmegl")
