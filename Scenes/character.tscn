@@ -401,6 +401,35 @@ tracks/12/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_t4kcd"]
+resource_name = "rope_launch"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Rope:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Rope:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
 [sub_resource type="Animation" id="Animation_fjdxq"]
 resource_name = "run"
 loop_mode = 1
@@ -561,35 +590,6 @@ tracks/12/keys = {
 "values": [Vector2(1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_t4kcd"]
-resource_name = "rope_launch"
-length = 0.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Rope:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Rope:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 6.28319]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_38h8f"]
 _data = {
 "RESET": SubResource("Animation_obexw"),
@@ -736,6 +736,7 @@ node_b = NodePath("../Hook")
 position = Vector2(0, 33.7907)
 collision_layer = 2
 collision_mask = 2
+mass = 0.5
 
 [node name="Sprite" type="Sprite2D" parent="Rope/Hook"]
 position = Vector2(0, -307)

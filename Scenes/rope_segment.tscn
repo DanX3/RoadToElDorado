@@ -9,6 +9,7 @@ height = 38.0
 [node name="RopeSegment" type="RigidBody2D"]
 collision_layer = 0
 collision_mask = 0
+mass = 0.07
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1.09624e-05, -4.93521)

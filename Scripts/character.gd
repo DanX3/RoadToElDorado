@@ -48,6 +48,8 @@ enum AnimState {
 }
 
 @onready var player = $Pivot/AnimationPlayer
+@onready var hook = $Rope/Hook
+@export var hook_rotate_force = 2000
 
 func _on_fsm_state_changed(old_state, new_state):
 	print(new_state)
@@ -58,5 +60,8 @@ func _on_fsm_state_changed(old_state, new_state):
 			player.play("run")
 		AnimState.ROPE_LAUNCH:
 			$Rope.show()
+			var hook_force = hook_rotate_force * hook.position.normalized().rotated(-0.5 * PI)
+			hook.add_constant_central_force(hook_force)
 		AnimState.ROPE_PULL:
 			$Rope.hide()
+			hook.add_constant_central_force(Vector2.ZERO)
