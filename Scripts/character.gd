@@ -28,10 +28,23 @@ func _physics_process(delta):
 		fsm.set_state(AnimState.IDLE)
 	else:
 		fsm.set_state(AnimState.RUNNING)
+		
+
+
+func _input(event):
+	if Input.is_action_just_pressed("rope"):
+		print("rope launch")
+		fsm.set_state(AnimState.ROPE_LAUNCH)
+	
+	if Input.is_action_just_released("rope"):
+		print("rope pull")
+		fsm.set_state(AnimState.ROPE_PULL)
 
 enum AnimState {
 	IDLE,
 	RUNNING,
+	ROPE_LAUNCH,
+	ROPE_PULL,
 }
 
 @onready var player = $Pivot/AnimationPlayer
@@ -43,3 +56,7 @@ func _on_fsm_state_changed(old_state, new_state):
 			player.play("idle")
 		AnimState.RUNNING:
 			player.play("run")
+		AnimState.ROPE_LAUNCH:
+			$Rope.show()
+		AnimState.ROPE_PULL:
+			$Rope.hide()
