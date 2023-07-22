@@ -46,3 +46,4 @@ action={
 [layer_names]
 
 2d_physics/layer_8="Dock"
+2d_physics/layer_9="Interactable"

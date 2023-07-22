@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://viwfq0kos78a"]
+
+[ext_resource type="Texture2D" uid="uid://clms1rrecmnr2" path="res://Assets/roguelikeSheet.png" id="1_kn8xa"]
+[ext_resource type="Script" path="res://Scripts/sign_post.gd" id="1_t52uo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsqib"]
+resource_local_to_scene = true
+atlas = ExtResource("1_kn8xa")
+region = Rect2(324, 3, 14, 13)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s7sq8"]
+radius = 42.0
+
+[node name="SignPost" type="Area2D"]
+collision_mask = 257
+script = ExtResource("1_t52uo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -26)
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_lsqib")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -29)
+shape = SubResource("CircleShape2D_s7sq8")

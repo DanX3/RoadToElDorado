@@ -19,8 +19,9 @@ func _ready():
 	rotation = get_orientation(velocity)
 
 
-func _process(_delta: float):
-	if Input.is_action_just_pressed("action") && player_in_boarding_area:
+func _unhandled_input(event: InputEvent):
+	if event.is_action_pressed("action") && player_in_boarding_area:
+		get_viewport().set_input_as_handled()
 		player_in_boarding_area.queue_free()
 		undock()
 
@@ -69,6 +70,7 @@ func dock():
 func undock():
 	docked = false
 	$Camera2D.enabled = true
+	player_in_boarding_area = null
 
 
 func on_body_entered(body: Node2D):
