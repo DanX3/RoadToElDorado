@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1u7jstr44p8f"]
+
+[ext_resource type="Script" path="res://Scripts/dock.gd" id="1_0yqb7"]
+[ext_resource type="Texture2D" uid="uid://cb1lruube1yun" path="res://Assets/kenney_pirate-pack/PNG/Default size/Tiles/tile_76.png" id="1_3k2ai"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vvx5n"]
+radius = 5.0
+
+[node name="Dock" type="Area2D"]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("1_0yqb7")
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+texture = ExtResource("1_3k2ai")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -42)
+shape = SubResource("CircleShape2D_vvx5n")

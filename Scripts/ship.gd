@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Ship
 
 @export var max_speed: float
 @export var linear_acceleration: float
@@ -7,12 +8,27 @@ extends CharacterBody2D
 var target_direction: Vector2 = Vector2.RIGHT
 var target_speed: float = 0
 
+var docked: bool = false
+var player_in_boarding_area: Node2D = null
+
 
 func _ready():
+	$PlayerBoardingArea.body_entered.connect(on_body_entered)
+	$PlayerBoardingArea.body_exited.connect(on_body_exited)
+
 	rotation = get_orientation(velocity)
 
 
+func _process(_delta: float):
+	if Input.is_action_just_pressed("action") && player_in_boarding_area:
+		player_in_boarding_area.queue_free()
+		undock()
+
+
 func _physics_process(delta: float):
+	if docked:
+		return
+
 	var movement = get_movement_direction()
 	if movement.length_squared() > 0:
 		target_direction = movement.normalized()
@@ -43,3 +59,19 @@ func accelerate(delta: float) -> Vector2:
 
 func get_orientation(direction: Vector2) -> float:
 	return direction.angle() - PI / 2.0
+
+
+func dock():
+	docked = true
+
+
+func undock():
+	docked = false
+
+
+func on_body_entered(body: Node2D):
+	player_in_boarding_area = body
+
+
+func on_body_exited(_body: Node2D):
+	player_in_boarding_area = null
