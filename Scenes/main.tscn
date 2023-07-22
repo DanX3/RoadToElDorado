@@ -40,5 +40,4 @@ position = Vector2(2623, 379)
 message = "Press Spacebar when close to your ship to board it"
 
 [node name="Npc" parent="." instance=ExtResource("5_cgnvy")]
-position = Vector2(2706, 735)
-scale = Vector2(-1.5, 1.5)
+position = Vector2(2696, 679)
