@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dx10ptboxwtsr"]
+[gd_scene load_steps=6 format=3 uid="uid://dx10ptboxwtsr"]
 
 [ext_resource type="TileSet" uid="uid://cbap12gqoij2l" path="res://Assets/map_tileset.tres" id="1_l7n36"]
 [ext_resource type="PackedScene" uid="uid://d236ovvwvy01r" path="res://Scenes/ship.tscn" id="2_5qe61"]
 [ext_resource type="PackedScene" uid="uid://b1u7jstr44p8f" path="res://Scenes/dock.tscn" id="3_tfxao"]
 [ext_resource type="PackedScene" uid="uid://viwfq0kos78a" path="res://Scenes/sign_post.tscn" id="4_m8rlf"]
+[ext_resource type="PackedScene" uid="uid://1x2ua3u3iv14" path="res://Scenes/npc.tscn" id="5_cgnvy"]
 
 [node name="Main" type="Node2D"]
 
@@ -37,3 +38,7 @@ position = Vector2(2567, 190)
 [node name="SignPost" parent="." instance=ExtResource("4_m8rlf")]
 position = Vector2(2623, 379)
 message = "Press Spacebar when close to your ship to board it"
+
+[node name="Npc" parent="." instance=ExtResource("5_cgnvy")]
+position = Vector2(2706, 735)
+scale = Vector2(-1.5, 1.5)

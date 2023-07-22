@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://1x2ua3u3iv14"]
+
+[ext_resource type="Script" path="res://Scripts/npc.gd" id="1_yb2xf"]
+[ext_resource type="PackedScene" uid="uid://dvwr8pibhua8r" path="res://Scenes/interactable_component.tscn" id="2_1rykq"]
+[ext_resource type="Texture2D" uid="uid://c64twvwp1wwvp" path="res://Assets/tiny-dungeon.png" id="2_1tavd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s7sq8"]
+radius = 64.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0ngo"]
+atlas = ExtResource("2_1tavd")
+region = Rect2(0, 112, 16, 16)
+
+[node name="Npc" type="Node2D"]
+script = ExtResource("1_yb2xf")
+
+[node name="InteractableComponent" parent="." instance=ExtResource("2_1rykq")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent"]
+position = Vector2(0, -28)
+shape = SubResource("CircleShape2D_s7sq8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -32)
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_n0ngo")
