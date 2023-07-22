@@ -1,0 +1,108 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpyeojv18lg3y"]
+
+[ext_resource type="Script" path="res://Scripts/teleport.gd" id="1_v0wef"]
+
+[sub_resource type="Animation" id="Animation_pjvhw"]
+resource_name = "teleport_to_in"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.5001, 0.5002, 0.7, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0.8), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"teleport_to_in"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_xep3w"]
+resource_name = "teleport_to_out"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.5001, 0.5002, 0.7, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0.8), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"teleport_to_out"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r6u63"]
+_data = {
+"teleport_to_in": SubResource("Animation_pjvhw"),
+"teleport_to_out": SubResource("Animation_xep3w")
+}
+
+[node name="DemoDoor" type="Node2D"]
+script = ExtResource("1_v0wef")
+
+[node name="In" type="Area2D" parent="."]
+position = Vector2(2593, 537)
+
+[node name="PlayerSpawn" type="Marker2D" parent="In"]
+position = Vector2(0, 90)
+
+[node name="Out" type="Area2D" parent="."]
+position = Vector2(1476, 1858)
+
+[node name="PlayerSpawn" type="Marker2D" parent="Out"]
+position = Vector2(6, 106)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TransitionRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 848.0
+offset_bottom = 2352.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/TransitionRect"]
+libraries = {
+"": SubResource("AnimationLibrary_r6u63")
+}
+
+[connection signal="body_entered" from="In" to="." method="_on_in_body_entered"]
+[connection signal="body_exited" from="In" to="." method="_on_in_body_exited"]
+[connection signal="body_entered" from="Out" to="." method="_on_out_body_entered"]
+[connection signal="body_exited" from="Out" to="." method="_on_out_body_exited"]

@@ -1,81 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://dx10ptboxwtsr"]
+[gd_scene load_steps=10 format=3 uid="uid://dx10ptboxwtsr"]
 
-[ext_resource type="PackedScene" uid="uid://ocba44xlt0dx" path="res://Scenes/inventory_ui.tscn" id="1_5hpuj"]
+[ext_resource type="PackedScene" path="res://Scenes/inventory_ui.tscn" id="1_5hpuj"]
 [ext_resource type="TileSet" uid="uid://cbap12gqoij2l" path="res://Assets/map_tileset.tres" id="1_l7n36"]
 [ext_resource type="PackedScene" uid="uid://d236ovvwvy01r" path="res://Scenes/ship.tscn" id="2_5qe61"]
 [ext_resource type="PackedScene" uid="uid://b1u7jstr44p8f" path="res://Scenes/dock.tscn" id="3_tfxao"]
 [ext_resource type="PackedScene" uid="uid://viwfq0kos78a" path="res://Scenes/sign_post.tscn" id="4_m8rlf"]
 [ext_resource type="PackedScene" uid="uid://1x2ua3u3iv14" path="res://Scenes/npc.tscn" id="5_cgnvy"]
-[ext_resource type="Script" path="res://Scripts/teleport.gd" id="5_yfk5u"]
+[ext_resource type="PackedScene" uid="uid://cpyeojv18lg3y" path="res://Scenes/door.tscn" id="7_efode"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ybtf"]
-size = Vector2(50, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_abjvx"]
+size = Vector2(72, 20)
 
-[sub_resource type="Animation" id="Animation_pjvhw"]
-resource_name = "teleport_to_in"
-length = 1.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.5001, 0.5002, 0.7, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0.8), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../..")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.6),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"teleport_to_in"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_xep3w"]
-resource_name = "teleport_to_out"
-length = 1.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.5001, 0.5002, 0.7, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0.8), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../..")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.6),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"teleport_to_out"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_r6u63"]
-_data = {
-"teleport_to_in": SubResource("Animation_pjvhw"),
-"teleport_to_out": SubResource("Animation_xep3w")
-}
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uu58k"]
 
 [node name="Main" type="Node2D"]
 
@@ -117,49 +53,16 @@ position = Vector2(2696, 679)
 
 [node name="Doors" type="Node" parent="."]
 
-[node name="DemoDoor" type="Node2D" parent="Doors"]
-script = ExtResource("5_yfk5u")
+[node name="DemoDoor" parent="Doors" instance=ExtResource("7_efode")]
+position = Vector2(1, 0)
 
-[node name="In" type="Area2D" parent="Doors/DemoDoor"]
-position = Vector2(2593, 537)
+[node name="In" parent="Doors/DemoDoor" index="0"]
+position = Vector2(2361, 363)
 
-[node name="doorway" type="CollisionShape2D" parent="Doors/DemoDoor/In"]
-shape = SubResource("RectangleShape2D_7ybtf")
-metadata/_edit_lock_ = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/DemoDoor/In" index="1"]
+shape = SubResource("RectangleShape2D_abjvx")
 
-[node name="PlayerSpawn" type="Marker2D" parent="Doors/DemoDoor/In"]
-position = Vector2(0, 90)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/DemoDoor/Out" index="1"]
+shape = SubResource("RectangleShape2D_uu58k")
 
-[node name="Out" type="Area2D" parent="Doors/DemoDoor"]
-position = Vector2(1476, 1858)
-
-[node name="doorway" type="CollisionShape2D" parent="Doors/DemoDoor/Out"]
-shape = SubResource("RectangleShape2D_7ybtf")
-metadata/_edit_lock_ = true
-
-[node name="PlayerSpawn" type="Marker2D" parent="Doors/DemoDoor/Out"]
-position = Vector2(6, 106)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="Doors/DemoDoor"]
-
-[node name="TransitionRect" type="ColorRect" parent="Doors/DemoDoor/CanvasLayer"]
-modulate = Color(1, 1, 1, 0)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 848.0
-offset_bottom = 2352.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Doors/DemoDoor/CanvasLayer/TransitionRect"]
-libraries = {
-"": SubResource("AnimationLibrary_r6u63")
-}
-
-[connection signal="body_entered" from="Doors/DemoDoor/In" to="Doors/DemoDoor" method="_on_in_body_entered"]
-[connection signal="body_exited" from="Doors/DemoDoor/In" to="Doors/DemoDoor" method="_on_in_body_exited"]
-[connection signal="body_entered" from="Doors/DemoDoor/Out" to="Doors/DemoDoor" method="_on_out_body_entered"]
-[connection signal="body_exited" from="Doors/DemoDoor/Out" to="Doors/DemoDoor" method="_on_out_body_exited"]
+[editable path="Doors/DemoDoor"]
