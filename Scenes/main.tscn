@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dx10ptboxwtsr"]
+[gd_scene load_steps=4 format=3 uid="uid://dx10ptboxwtsr"]
 
 [ext_resource type="TileSet" uid="uid://cbap12gqoij2l" path="res://Assets/map_tileset.tres" id="1_l7n36"]
+[ext_resource type="PackedScene" uid="uid://d236ovvwvy01r" path="res://Scenes/ship.tscn" id="2_5qe61"]
+[ext_resource type="PackedScene" uid="uid://b1u7jstr44p8f" path="res://Scenes/dock.tscn" id="3_tfxao"]
 
 [node name="Main" type="Node2D"]
 
@@ -24,3 +26,9 @@ layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = 0
 layer_2/tile_data = PackedInt32Array(983081, 65536, 5, 524328, 393216, 5, 852010, 0, 4, 327718, 0, 4, 393254, 131072, 4, 589862, 131072, 4, 655398, 0, 3, 786471, 458752, 4, 655400, 458752, 5, 852008, 0, 4, 393257, 458752, 4, 786473, 65536, 3, 2031625, 0, 4, 2293770, 65536, 3, 2097163, 0, 3, 2293771, 0, 3, 1769485, 131072, 4, 2031630, 65536, 3, 1769487, 65536, 3, 2031633, 131072, 3, 2031634, 131072, 4, 2097170, 0, 4, 2162708, 65536, 4, 2293780, 0, 4, 2490392, 262144, 5, 2555936, 0, 5, 2490429, 131072, 3, 2621501, 65536, 3, 2293823, 458752, 5, 2555970, 65536, 3, 2555973, 393216, 5, 2687045, 0, 4, 2621510, 0, 3, 2293830, 393216, 4, 2424899, 458752, 5, 2424900, 327680, 4)
+
+[node name="Ship" parent="." instance=ExtResource("2_5qe61")]
+position = Vector2(2567, 178)
+
+[node name="Dock" parent="." instance=ExtResource("3_tfxao")]
+position = Vector2(2567, 245)
