@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://yejmb0jqvelp"]
+[gd_scene load_steps=4 format=3 uid="uid://yejmb0jqvelp"]
 
 [ext_resource type="TileSet" uid="uid://cbap12gqoij2l" path="res://Assets/map_tileset.tres" id="1_re5uw"]
 [ext_resource type="PackedScene" uid="uid://dw0tavlr5v8vn" path="res://Scenes/character.tscn" id="2_pq8p5"]
+[ext_resource type="PackedScene" uid="uid://cw4yvb172g8b4" path="res://Scenes/hook_area.tscn" id="3_bpmwj"]
 
 [node name="RopeTest" type="Node2D"]
 position = Vector2(56, 49)
@@ -37,3 +38,11 @@ layer_3/tile_data = PackedInt32Array(917557, 524295, 10, 852021, 524295, 10, 786
 
 [node name="Character" parent="." instance=ExtResource("2_pq8p5")]
 position = Vector2(2521, 1007)
+
+[node name="HookArea" parent="." instance=ExtResource("3_bpmwj")]
+position = Vector2(3020, 809)
+
+[node name="CollisionShape2D" parent="HookArea" index="0"]
+position = Vector2(-7, 34)
+
+[editable path="HookArea"]

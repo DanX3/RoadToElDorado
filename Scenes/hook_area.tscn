@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw4yvb172g8b4"]
+
+[ext_resource type="Script" path="res://Scripts/HookArea.gd" id="1_2gyq7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ktoj"]
+size = Vector2(684, 542)
+
+[node name="HookArea" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_2gyq7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7, 1)
+shape = SubResource("RectangleShape2D_0ktoj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
