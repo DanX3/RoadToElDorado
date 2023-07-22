@@ -18,6 +18,15 @@ max_speed = 150.0
 linear_acceleration = 3.0
 angular_acceleration = 1.5
 
+[node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.3
+drag_top_margin = 0.3
+drag_right_margin = 0.3
+drag_bottom_margin = 0.3
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_oubu0")
 

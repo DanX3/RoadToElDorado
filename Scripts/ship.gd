@@ -63,10 +63,12 @@ func get_orientation(direction: Vector2) -> float:
 
 func dock():
 	docked = true
+	$Camera2D.enabled = false
 
 
 func undock():
 	docked = false
+	$Camera2D.enabled = true
 
 
 func on_body_entered(body: Node2D):
