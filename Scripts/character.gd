@@ -61,7 +61,10 @@ func _input(event):
 			fsm.set_state(AnimState.HUNG)
 
 func _on_end_swing():
-	fsm.set_state(AnimState.HUNG)
+	if hook.hung_on_end:
+		fsm.set_state(AnimState.HUNG)
+	else:
+		fsm.set_state(AnimState.IDLE)
 
 enum AnimState {
 	IDLE,
