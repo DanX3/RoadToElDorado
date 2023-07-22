@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5bbgmc3kfmy8"]
+
+[ext_resource type="Script" path="res://Scripts/destructible_rock.gd" id="1_7lc3u"]
+[ext_resource type="PackedScene" uid="uid://dvwr8pibhua8r" path="res://Scenes/interactable_component.tscn" id="1_dvutl"]
+[ext_resource type="Texture2D" uid="uid://ioq1e23k705e" path="res://Assets/kenney_pirate-pack/PNG/Retina/Tiles/tile_66.png" id="2_cu78r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5pdjt"]
+radius = 100.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7qrw1"]
+radius = 56.2
+
+[node name="DestructibleRock" type="RigidBody2D" groups=["blastable"]]
+lock_rotation = true
+freeze = true
+script = ExtResource("1_7lc3u")
+
+[node name="InteractableComponent" parent="." instance=ExtResource("1_dvutl")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent"]
+shape = SubResource("CircleShape2D_5pdjt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_cu78r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7qrw1")

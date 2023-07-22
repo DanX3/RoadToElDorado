@@ -1,6 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://dx10ptboxwtsr"]
+[gd_scene load_steps=15 format=3 uid="uid://dx10ptboxwtsr"]
 
-[ext_resource type="PackedScene" path="res://Scenes/inventory_ui.tscn" id="1_5hpuj"]
+[ext_resource type="PackedScene" uid="uid://ocba44xlt0dx" path="res://Scenes/inventory_ui.tscn" id="1_5hpuj"]
 [ext_resource type="TileSet" uid="uid://cbap12gqoij2l" path="res://Assets/map_tileset.tres" id="1_l7n36"]
 [ext_resource type="PackedScene" uid="uid://p2ki4uxrxqh" path="res://Scenes/compass.tscn" id="1_vcggb"]
 [ext_resource type="PackedScene" uid="uid://d236ovvwvy01r" path="res://Scenes/ship.tscn" id="2_5qe61"]
@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://viwfq0kos78a" path="res://Scenes/sign_post.tscn" id="4_m8rlf"]
 [ext_resource type="PackedScene" uid="uid://1x2ua3u3iv14" path="res://Scenes/npc.tscn" id="5_cgnvy"]
 [ext_resource type="PackedScene" uid="uid://cpyeojv18lg3y" path="res://Scenes/door.tscn" id="7_efode"]
+[ext_resource type="PackedScene" uid="uid://c5bbgmc3kfmy8" path="res://Scenes/destructible_rock.tscn" id="9_uwrif"]
+[ext_resource type="PackedScene" uid="uid://delnjgsv0yk8d" path="res://Scenes/pick_up_item.tscn" id="10_wrkjl"]
+[ext_resource type="Resource" uid="uid://8yjgjnglq3mr" path="res://Resources/bombs.tres" id="11_vh8bu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_abjvx"]
 size = Vector2(72, 20)
@@ -59,6 +62,13 @@ path = NodePath("../Path2D")
 
 [node name="Path2D" parent="." instance=ExtResource("2_x0lrv")]
 position = Vector2(2686, 171)
+
+[node name="DestructibleRock" parent="." instance=ExtResource("9_uwrif")]
+position = Vector2(2451, 943)
+
+[node name="BombPickUps" parent="." instance=ExtResource("10_wrkjl")]
+position = Vector2(2734, 946)
+item = ExtResource("11_vh8bu")
 
 [node name="Doors" type="Node" parent="."]
 

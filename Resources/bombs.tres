@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://8yjgjnglq3mr"]
+
+[ext_resource type="Script" path="res://Scripts/item.gd" id="1_dkc8r"]
+[ext_resource type="Texture2D" uid="uid://d2edsj1yt0i7h" path="res://Assets/tiny-town.png" id="2_87bgk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjk3g"]
+atlas = ExtResource("2_87bgk")
+region = Rect2(144, 128, 16, 16)
+
+[resource]
+script = ExtResource("1_dkc8r")
+id = "bombs"
+name = "Bombs"
+texture = SubResource("AtlasTexture_vjk3g")
