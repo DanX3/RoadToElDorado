@@ -1,5 +1,5 @@
 extends RigidBody2D
-
+class_name Player
 
 @export var SPEED = 3000
 @onready var fsm: FSM = $FSM
@@ -57,7 +57,6 @@ enum AnimState {
 @export var hook_rotate_force = 2000
 
 func _on_fsm_state_changed(old_state, new_state):
-	print(new_state)
 	match new_state:
 		AnimState.IDLE:
 			player.play("idle")
