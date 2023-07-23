@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dpcppc8vh7k0q"]
+[gd_scene load_steps=42 format=3 uid="uid://dpcppc8vh7k0q"]
 
 [ext_resource type="TileSet" uid="uid://cbap12gqoij2l" path="res://Assets/map_tileset.tres" id="1_dhidy"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_v6jmt"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d236ovvwvy01r" path="res://Scenes/ship.tscn" id="3_fnxw5"]
 [ext_resource type="PackedScene" uid="uid://viwfq0kos78a" path="res://Scenes/sign_post.tscn" id="4_ifm1t"]
 [ext_resource type="PackedScene" uid="uid://bx5r2tx53wlc7" path="res://Scenes/message_box.tscn" id="6_y63fr"]
-[ext_resource type="PackedScene" path="res://Scenes/inventory_ui.tscn" id="7_5rxmm"]
+[ext_resource type="PackedScene" uid="uid://ocba44xlt0dx" path="res://Scenes/inventory_ui.tscn" id="7_5rxmm"]
 [ext_resource type="PackedScene" uid="uid://1x2ua3u3iv14" path="res://Scenes/npc.tscn" id="8_wcqpg"]
 [ext_resource type="Resource" uid="uid://bu7wrotim7t75" path="res://Resources/compass.tres" id="9_1p8h0"]
 [ext_resource type="PackedScene" uid="uid://delnjgsv0yk8d" path="res://Scenes/pick_up_item.tscn" id="10_lvyky"]
@@ -14,9 +14,11 @@
 [ext_resource type="Resource" uid="uid://bxy8n6bp5ra04" path="res://Resources/fishing_pole.tres" id="12_dvib0"]
 [ext_resource type="Resource" uid="uid://c5q1fr4eksnb4" path="res://Resources/rope_item.tres" id="13_s4y5g"]
 [ext_resource type="Texture2D" uid="uid://cghyqc5lbnif1" path="res://Assets/fishingPole.png" id="14_ri0b7"]
-[ext_resource type="PackedScene" path="res://Scenes/land_area.tscn" id="15_mkqw3"]
-[ext_resource type="PackedScene" path="res://Scenes/hook_area.tscn" id="16_8sjtu"]
+[ext_resource type="PackedScene" uid="uid://bpjna400p855k" path="res://Scenes/land_area.tscn" id="15_mkqw3"]
+[ext_resource type="PackedScene" uid="uid://cw4yvb172g8b4" path="res://Scenes/hook_area.tscn" id="16_8sjtu"]
 [ext_resource type="Resource" uid="uid://cu12ahkaoj8su" path="res://Resources/SailingForDummies.tres" id="17_xuu08"]
+[ext_resource type="Shader" path="res://Assets/Smoke.gdshader" id="19_blvd2"]
+[ext_resource type="Texture2D" uid="uid://c82xt0agbu5gb" path="res://Assets/Particles/smoke_04.png" id="20_h7yqy"]
 
 [sub_resource type="Animation" id="Animation_urgaw"]
 length = 0.001
@@ -107,9 +109,21 @@ size = Vector2(394, 452)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k0llc"]
 size = Vector2(396, 280)
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("start_messagebox")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_tpwty"]
+radius = 688.059
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_quax6"]
+shader = ExtResource("19_blvd2")
+shader_parameter/speed = PackedVector2Array(0.1, -0.055, -0.035, 0.125, 0.11, -0.1)
+shader_parameter/opacities = PackedFloat32Array(0.5, 0.1, 0.2)
+shader_parameter/scales = PackedFloat32Array(0.705, 0.25, 0.445)
+shader_parameter/darkness_radius = 1.27
+shader_parameter/smoke_tex = ExtResource("20_h7yqy")
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("start_messagebox", "fog")]
 script = ExtResource("1_v6jmt")
 start_messagebox = NodePath("MessageBox")
+fog = NodePath("CanvasLayer/Smoke")
 
 [node name="WorldMap" type="TileMap" parent="."]
 position = Vector2(10, -2)
@@ -362,6 +376,26 @@ position = Vector2(3727, 2779)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HookArea4"]
 position = Vector2(28, 9)
 shape = SubResource("RectangleShape2D_k0llc")
+
+[node name="FogArea" type="Area2D" parent="."]
+position = Vector2(726, 2525)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FogArea"]
+shape = SubResource("CircleShape2D_tpwty")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Smoke" type="ColorRect" parent="CanvasLayer"]
+visible = false
+material = SubResource("ShaderMaterial_quax6")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="body_entered" from="FogArea" to="." method="_on_fog_area_body_entered"]
+[connection signal="body_exited" from="FogArea" to="." method="_on_fog_area_body_exited"]
 
 [editable path="GreetedNPC"]
 [editable path="DuckNPC"]
