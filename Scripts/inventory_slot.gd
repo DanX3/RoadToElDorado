@@ -6,4 +6,4 @@ class_name InventorySlot
 
 func _set_texture(other: Texture2D):
 	texture = other
-	$Control/Sprite2D.texture = texture
+	%TextureRect.texture = texture
