@@ -3,7 +3,7 @@ class_name Door
 
 @onready var animation_player = $CanvasLayer/TransitionRect/AnimationPlayer
 
-var player: Player
+var player: Node2D
 
 func _on_in_body_entered(body):
 	player = body

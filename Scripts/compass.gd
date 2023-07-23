@@ -8,7 +8,11 @@ extends CanvasLayer
 var index: int = 0
 
 
-func _process(delta):	
+func _ready():
+	PlayerInventory.item_added.connect(on_item_added)
+
+
+func _process(delta):
 	var path_point_pos = path.to_global(path.curve.get_point_position(index))
 	var dist = origin.global_position.distance_to(path_point_pos)
 	
@@ -18,7 +22,12 @@ func _process(delta):
 		index += 1
 		if path.curve.point_count == index:
 			print("YEAH, hai trovato Eldorado")
+			index -= 1
 			return
 	elif dist > max_dist_to_be_lost:
 		index = 0
-	
+
+
+func on_item_added(item: Item, _inventory: InventoryComponent):
+	if item.id == "compass":
+		visible = true
