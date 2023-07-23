@@ -24,11 +24,11 @@ func _ready():
 func update_inventory(inventory: InventoryComponent):
 	var i = 0
 	while i < min(inventory.size(), MAX_SLOTS):
-		inventory_slots[i].texture = inventory.get_at(i).texture
+		inventory_slots[i].item = inventory.get_at(i)
 		i += 1
 
 	while i < MAX_SLOTS:
-		inventory_slots[i].texture = null
+		inventory_slots[i].item = null
 		i += 1
 
 

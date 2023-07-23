@@ -13,12 +13,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Control" type="Control" parent="MarginContainer"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
+mouse_filter = 2
 
 [node name="Ring" type="TextureRect" parent="MarginContainer/Control"]
 layout_mode = 0
@@ -27,6 +29,7 @@ offset_top = -42.0
 offset_right = 42.0
 offset_bottom = 22.0
 scale = Vector2(2.07947, 2.07947)
+mouse_filter = 2
 texture = ExtResource("2_cbjnb")
 
 [node name="Arrow" type="TextureRect" parent="MarginContainer/Control"]
@@ -35,4 +38,5 @@ layout_mode = 0
 offset_right = 91.0
 offset_bottom = 48.0
 pivot_offset = Vector2(46, 25)
+mouse_filter = 2
 texture = ExtResource("3_bf0sc")
