@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cu12ahkaoj8su"]
+
+[ext_resource type="Script" path="res://Scripts/item.gd" id="1_hjxvw"]
+[ext_resource type="Texture2D" uid="uid://b5be47k8itvy2" path="res://Assets/genericItem_color_035.png" id="2_5paga"]
+
+[resource]
+script = ExtResource("1_hjxvw")
+id = "manual"
+name = "Sailing for Dummies"
+texture = ExtResource("2_5paga")
