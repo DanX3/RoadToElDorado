@@ -5,7 +5,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	start_messagebox.present()
+	$Timer.start()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,3 +22,7 @@ func _on_fog_area_body_entered(body):
 func _on_fog_area_body_exited(body):
 	if body is Player or body is Ship:
 		fog.hide()
+
+
+func _on_timer_timeout():
+	start_messagebox.present()

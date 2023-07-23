@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxl3lfeftng3d"]
+
+[ext_resource type="Script" path="res://Scripts/HookArea.gd" id="1_pd43b"]
+[ext_resource type="TileSet" uid="uid://cbap12gqoij2l" path="res://Assets/map_tileset.tres" id="2_8x72d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j3j6w"]
+size = Vector2(424, 433)
+
+[node name="HookAreaSquare" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_pd43b")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_8x72d")
+format = 2
+layer_0/tile_data = PackedInt32Array(65538, 524295, 10, 2, 524295, 10, -65534, 524295, 10, 65537, 524295, 10, 1, 524295, 10, -65535, 524295, 10, 65536, 524295, 10, 0, 524295, 10, -65536, 524295, 10, 131071, 524295, 10, 65535, 524295, 10, -1, 524295, 10, 65534, 524295, 10, -2, 524295, 10, -65538, 524295, 10, -65537, 524295, 10, -131072, 524295, 10, 131070, 524295, 10, 131072, 524295, 10, 196607, 524295, 10, 196606, 524295, 10, -131071, 524295, 10, 131073, 524295, 10, -131070, 524295, 10, 131074, 524295, 10, -65533, 524295, 10, 3, 524295, 10, -131069, 524295, 10, 65539, 524295, 10, 131075, 524295, 10, 196611, 524295, 10, 196610, 524295, 10, 196609, 524295, 10, 196608, 524295, 10, 262143, 524295, 10, 262142, 524295, 10, -3, 458759, 10, -65539, 458759, 10, -131075, 458759, 9, -131074, 524295, 9, -131073, 524295, 9, 65533, 458759, 10, 131069, 458759, 10, 196605, 458759, 10, 262141, 458759, 10, 327679, 524295, 11, 327678, 524295, 11, 327677, 458759, 11, -196608, 524295, 9, 262144, 524295, 11, -196607, 524295, 9, 262145, 524295, 11, -196606, 524295, 9, 262146, 524295, 11, -196605, 524295, 9, 262147, 524295, 11, -131068, 589831, 10, -65532, 589831, 10, -196604, 589831, 9, 4, 589831, 10, 65540, 589831, 10, 131076, 589831, 10, 196612, 589831, 10, 262148, 589831, 11)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(64, 64.5)
+shape = SubResource("RectangleShape2D_j3j6w")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

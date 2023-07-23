@@ -966,6 +966,7 @@ shape = SubResource("CapsuleShape2D_b76eo")
 script = ExtResource("9_khydh")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -20.0
 offset_top = -106.0
 offset_right = 20.0

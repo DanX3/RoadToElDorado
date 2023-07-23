@@ -25,6 +25,8 @@ func _physics_process(delta: float):
 	if movement.length_squared() > 0:
 		target_direction = movement.normalized()
 		target_speed = max_speed
+		if PlayerInventory.contains("manual"):
+			target_speed = 1.5 * max_speed
 	else:
 		target_speed = 0
 

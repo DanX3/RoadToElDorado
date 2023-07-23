@@ -27,10 +27,10 @@ func interact() -> bool:
 	message_box.present()
 	await message_box.finished
 
+	if reward and quest_completed:
+		inventory.add(reward)
+		
 	if quest_item && consume_quest_item:
 		inventory.remove(quest_item.id)
-
-	if reward:
-		inventory.add(reward)
 
 	return quest_completed

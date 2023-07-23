@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnt2i0dht0ko"]
+
+[ext_resource type="Script" path="res://Scripts/HookArea.gd" id="1_j7xk3"]
+[ext_resource type="TileSet" uid="uid://cbap12gqoij2l" path="res://Assets/map_tileset.tres" id="2_iu4gd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j3j6w"]
+size = Vector2(566, 176)
+
+[node name="HookAreaHorizontal" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_j7xk3")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_iu4gd")
+format = 2
+layer_0/tile_data = PackedInt32Array(3, 524295, 10, -65533, 524295, 10, 2, 524295, 10, -65534, 524295, 10, 1, 524295, 10, -65535, 524295, 10, 0, 524295, 10, -65536, 524295, 10, 65535, 524295, 10, -1, 524295, 10, 65534, 524295, 10, -2, 524295, 10, 65533, 524295, 10, -3, 524295, 10, 65532, 524295, 10, -4, 524295, 10, 65531, 458759, 10, -5, 458759, 10, -65541, 458759, 9, -65540, 524295, 9, -65539, 524295, 9, 131069, 524295, 11, 131068, 524295, 11, 131067, 458759, 11, -65538, 524295, 9, 131070, 524295, 11, -65537, 524295, 9, 131071, 524295, 11, -131072, 524295, 9, 65536, 524295, 11, -131071, 524295, 9, 65537, 524295, 11, -131070, 524295, 9, 65538, 524295, 11, -131069, 524295, 9, 65539, 524295, 11, -65532, 589831, 10, 4, 589831, 10, -131068, 589831, 9, 65540, 589831, 11)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_j3j6w")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
