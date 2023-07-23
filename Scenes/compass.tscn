@@ -4,14 +4,35 @@
 [ext_resource type="Texture2D" uid="uid://ew403hq5xkhv" path="res://Assets/tank_explosion1.png" id="2_cbjnb"]
 [ext_resource type="Texture2D" uid="uid://sh40se88oblq" path="res://Assets/tank_arrowFull.png" id="3_bf0sc"]
 
-[node name="compass" type="Node2D" node_paths=PackedStringArray("path")]
-position = Vector2(289, 176)
+[node name="Compass" type="CanvasLayer"]
 script = ExtResource("1_1adw7")
-path = NodePath("")
 
-[node name="RingSprite" type="Sprite2D" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="MarginContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="Ring" type="TextureRect" parent="MarginContainer/Control"]
+layout_mode = 0
+offset_left = -22.0
+offset_top = -42.0
+offset_right = 42.0
+offset_bottom = 22.0
+scale = Vector2(2.07947, 2.07947)
 texture = ExtResource("2_cbjnb")
 
-[node name="Arrow" type="Sprite2D" parent="."]
-scale = Vector2(0.497253, 0.59375)
+[node name="Arrow" type="TextureRect" parent="MarginContainer/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 91.0
+offset_bottom = 48.0
+pivot_offset = Vector2(46, 25)
 texture = ExtResource("3_bf0sc")

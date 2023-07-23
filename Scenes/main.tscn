@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://dx10ptboxwtsr"]
 
-[ext_resource type="PackedScene" uid="uid://ocba44xlt0dx" path="res://Scenes/inventory_ui.tscn" id="1_5hpuj"]
+[ext_resource type="PackedScene" path="res://Scenes/inventory_ui.tscn" id="1_5hpuj"]
 [ext_resource type="TileSet" uid="uid://cbap12gqoij2l" path="res://Assets/map_tileset.tres" id="1_l7n36"]
 [ext_resource type="PackedScene" uid="uid://p2ki4uxrxqh" path="res://Scenes/compass.tscn" id="1_vcggb"]
 [ext_resource type="PackedScene" uid="uid://d236ovvwvy01r" path="res://Scenes/ship.tscn" id="2_5qe61"]
@@ -56,9 +56,9 @@ message = "Press Spacebar when close to your ship to board it"
 [node name="Npc" parent="." instance=ExtResource("5_cgnvy")]
 position = Vector2(2696, 679)
 
-[node name="compass" parent="." node_paths=PackedStringArray("path") instance=ExtResource("1_vcggb")]
-position = Vector2(2531, -9)
+[node name="compass" parent="." node_paths=PackedStringArray("path", "origin") instance=ExtResource("1_vcggb")]
 path = NodePath("../Path2D")
+origin = NodePath("../Ship")
 
 [node name="Path2D" parent="." instance=ExtResource("2_x0lrv")]
 position = Vector2(2686, 171)
