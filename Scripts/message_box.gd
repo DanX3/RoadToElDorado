@@ -1,6 +1,8 @@
 extends CanvasLayer
 class_name MessageBox
 
+signal finished
+
 @export_multiline var messages: Array[String] = []
 
 var current_message: int = 0
@@ -12,6 +14,7 @@ func _input(event: InputEvent):
 		
 		if !advance():
 			get_tree().paused = false
+			finished.emit()
 			Callable(queue_free).call_deferred()
 
 

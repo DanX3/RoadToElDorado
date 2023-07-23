@@ -25,6 +25,7 @@ func interact() -> bool:
 		message_box.messages.append_array(quest_item_not_present_messages)
 
 	message_box.present()
+	await message_box.finished
 
 	if quest_item && consume_quest_item:
 		inventory.remove(quest_item.id)
