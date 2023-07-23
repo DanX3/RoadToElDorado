@@ -13,11 +13,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	$Label.text = str(fsm.state)
 	if fsm.state == AnimState.ROPE_PULL:
 		hook.global_position = hook_position
 
 func _physics_process(delta):
-	
 	if not $Rope.visible and fsm.state != AnimState.HUNG:
 		var movement = Vector2(Input.get_axis("move_left", "move_right"), \
 			Input.get_axis("move_up", "move_down")).normalized()
@@ -35,7 +35,6 @@ func _physics_process(delta):
 	if Input.is_action_pressed("rope"):
 		hook_force = hook_rotate_force * Vector2.ZERO.direction_to(hook.position).rotated(-0.5 * PI)
 		hook.apply_central_force(delta * hook_force)
-		queue_redraw()
 
 var hook_force = Vector2.ZERO
 
@@ -46,7 +45,6 @@ func _input(event):
 	
 	if Input.is_action_just_released("rope"):
 		if hook.can_hook:
-			$CollisionShape2D.disabled = true
 			fsm.set_state(AnimState.ROPE_PULL)
 			var tween = create_tween()
 			tween.tween_property(self, "global_position", $Rope/Hook/HookPoint.global_position, 0.5)
@@ -58,7 +56,6 @@ func _input(event):
 			hook_position = hook.global_position
 		else:
 			$Rope.hide()
-			fsm.set_state(AnimState.HUNG)
 
 func _on_end_swing():
 	if hook.hung_on_end:
@@ -78,16 +75,27 @@ enum AnimState {
 @onready var hook = $Rope/Hook
 @export var hook_rotate_force = 20000
 
+var is_hanging = false
+
 func _on_fsm_state_changed(old_state, new_state):
+	match (old_state):
+		AnimState.HUNG:
+			$CollisionShape2D.disabled = false
+	
 	match new_state:
 		AnimState.IDLE:
+			is_hanging = false
+			print("set IDLE")
 			player.play("idle")
 		AnimState.RUNNING:
 			player.play("run")
 		AnimState.ROPE_LAUNCH:
 			$Rope.show()
+			$Rope/Hook/CollisionShape2D.disabled = false
 		AnimState.ROPE_PULL:
-			pass
+			$Rope/Hook/CollisionShape2D.disabled = true
 		AnimState.HUNG:
+			is_hanging = true
+			$CollisionShape2D.disabled = true
 			player.play("hung")
 			print("HUNG state")

@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 var can_hook = false
-var hung_on_end := true
+var hung_on_end := false
 
 func set_hook(new_can_hook):
 	can_hook = new_can_hook

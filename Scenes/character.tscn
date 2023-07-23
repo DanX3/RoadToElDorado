@@ -260,7 +260,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"transitions": PackedFloat32Array(-2, -2),
 "update": 0,
 "values": [Vector2(-17, 6), Vector2(2, 7)]
 }
@@ -272,7 +272,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"transitions": PackedFloat32Array(-2, -2),
 "update": 0,
 "values": [-0.302602, -0.846831]
 }
@@ -284,7 +284,7 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(-2),
 "update": 0,
 "values": [Vector2(0, -12)]
 }
@@ -296,7 +296,7 @@ tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"transitions": PackedFloat32Array(-2, -2),
 "update": 0,
 "values": [-0.439639, 0.25911]
 }
@@ -308,7 +308,7 @@ tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(-2),
 "update": 0,
 "values": [Vector2(16, -6)]
 }
@@ -320,7 +320,7 @@ tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(-2),
 "update": 0,
 "values": [-3.03299]
 }
@@ -332,7 +332,7 @@ tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(-2),
 "update": 0,
 "values": [Vector2(-14.7844, -4.18115)]
 }
@@ -344,7 +344,7 @@ tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"transitions": PackedFloat32Array(-2, -2),
 "update": 0,
 "values": [0.218636, 0.482101]
 }
@@ -356,7 +356,7 @@ tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(-2),
 "update": 0,
 "values": [Vector2(8, 18)]
 }
@@ -368,7 +368,7 @@ tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"transitions": PackedFloat32Array(-2, -2),
 "update": 0,
 "values": [-0.303196, 0.265801]
 }
@@ -380,7 +380,7 @@ tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(-2),
 "update": 0,
 "values": [Vector2(-8, 18)]
 }
@@ -392,7 +392,7 @@ tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"transitions": PackedFloat32Array(-2, -2),
 "update": 0,
 "values": [0.272411, 0.699489]
 }
@@ -404,7 +404,7 @@ tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
 "times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(-2),
 "update": 0,
 "values": [Vector2(-1, 1)]
 }
@@ -778,10 +778,10 @@ tracks/1/path = NodePath("../Rope:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false]
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_38h8f"]
@@ -901,6 +901,7 @@ position = Vector2(-1.06066, -23.3497)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rope/Hook"]
 position = Vector2(-1.06066, -12.3497)
 shape = SubResource("CapsuleShape2D_ip3mq")
+disabled = true
 
 [node name="Pivot" type="Node2D" parent="."]
 
@@ -962,5 +963,11 @@ shape = SubResource("CapsuleShape2D_b76eo")
 
 [node name="InventoryComponent" type="Node" parent="."]
 script = ExtResource("9_khydh")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -106.0
+offset_right = 20.0
+offset_bottom = -83.0
 
 [connection signal="state_changed" from="FSM" to="." method="_on_fsm_state_changed"]
