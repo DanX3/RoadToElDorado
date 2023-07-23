@@ -15,15 +15,15 @@
 [ext_resource type="Resource" uid="uid://bxy8n6bp5ra04" path="res://Resources/fishing_pole.tres" id="12_dvib0"]
 [ext_resource type="Resource" uid="uid://c5q1fr4eksnb4" path="res://Resources/rope_item.tres" id="13_s4y5g"]
 [ext_resource type="Texture2D" uid="uid://cghyqc5lbnif1" path="res://Assets/fishingPole.png" id="14_ri0b7"]
-[ext_resource type="PackedScene" uid="uid://bpjna400p855k" path="res://Scenes/land_area.tscn" id="15_mkqw3"]
-[ext_resource type="PackedScene" uid="uid://cw4yvb172g8b4" path="res://Scenes/hook_area.tscn" id="16_8sjtu"]
+[ext_resource type="PackedScene" path="res://Scenes/land_area.tscn" id="15_mkqw3"]
+[ext_resource type="PackedScene" path="res://Scenes/hook_area.tscn" id="16_8sjtu"]
 [ext_resource type="Resource" uid="uid://cu12ahkaoj8su" path="res://Resources/SailingForDummies.tres" id="17_xuu08"]
 [ext_resource type="Shader" path="res://Assets/Smoke.gdshader" id="19_blvd2"]
 [ext_resource type="Texture2D" uid="uid://c82xt0agbu5gb" path="res://Assets/Particles/smoke_04.png" id="20_h7yqy"]
 [ext_resource type="PackedScene" uid="uid://c5bbgmc3kfmy8" path="res://Scenes/destructible_rock.tscn" id="20_iajfo"]
 [ext_resource type="Resource" uid="uid://c3afvqhte2sb0" path="res://Resources/bombs.tres" id="21_uxcga"]
 [ext_resource type="PackedScene" uid="uid://cpyeojv18lg3y" path="res://Scenes/door.tscn" id="23_xi706"]
-[ext_resource type="PackedScene" path="res://Scenes/EldoradoIsland.tscn" id="24_b1uw7"]
+[ext_resource type="PackedScene" uid="uid://bt3l3vkp2w5yd" path="res://Scenes/EldoradoIsland.tscn" id="24_b1uw7"]
 
 [sub_resource type="Animation" id="Animation_urgaw"]
 length = 0.001
