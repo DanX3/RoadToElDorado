@@ -13,12 +13,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$Label.text = str(fsm.state)
+	$Label.text = str(fsm.state) + "\nis hanging:" + str(is_hanging)
 	if fsm.state == AnimState.ROPE_PULL:
 		hook.global_position = hook_position
 
 func _physics_process(delta):
-	if not $Rope.visible and fsm.state != AnimState.HUNG:
+	if not $Rope.visible and not is_hanging:
 		var movement = Vector2(Input.get_axis("move_left", "move_right"), \
 			Input.get_axis("move_up", "move_down")).normalized()
 		apply_central_force(SPEED * movement)
@@ -55,7 +55,10 @@ func _input(event):
 			player.play("swing_to_hook")
 			hook_position = hook.global_position
 		else:
-			$Rope.hide()
+			if is_hanging:
+				fsm.set_state(AnimState.HUNG)
+			else:
+				fsm.set_state(AnimState.IDLE)
 
 func _on_end_swing():
 	if hook.hung_on_end:
@@ -85,8 +88,8 @@ func _on_fsm_state_changed(old_state, new_state):
 	match new_state:
 		AnimState.IDLE:
 			is_hanging = false
-			print("set IDLE")
 			player.play("idle")
+			$Rope.hide()
 		AnimState.RUNNING:
 			player.play("run")
 		AnimState.ROPE_LAUNCH:
@@ -96,6 +99,7 @@ func _on_fsm_state_changed(old_state, new_state):
 			$Rope/Hook/CollisionShape2D.disabled = true
 		AnimState.HUNG:
 			is_hanging = true
+			$Rope.hide()
 			$CollisionShape2D.disabled = true
 			player.play("hung")
 			print("HUNG state")

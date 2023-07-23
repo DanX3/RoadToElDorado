@@ -886,6 +886,7 @@ position = Vector2(1.06066, -258.21)
 collision_layer = 4
 collision_mask = 0
 mass = 0.2
+freeze_mode = 1
 linear_damp = 1.0
 script = ExtResource("7_nf365")
 

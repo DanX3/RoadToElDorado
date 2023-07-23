@@ -2,16 +2,16 @@
 
 [ext_resource type="PackedScene" path="res://Scenes/inventory_ui.tscn" id="1_5hpuj"]
 [ext_resource type="TileSet" uid="uid://cbap12gqoij2l" path="res://Assets/map_tileset.tres" id="1_l7n36"]
-[ext_resource type="PackedScene" uid="uid://p2ki4uxrxqh" path="res://Scenes/compass.tscn" id="1_vcggb"]
+[ext_resource type="PackedScene" path="res://Scenes/compass.tscn" id="1_vcggb"]
 [ext_resource type="PackedScene" uid="uid://d236ovvwvy01r" path="res://Scenes/ship.tscn" id="2_5qe61"]
-[ext_resource type="PackedScene" uid="uid://dpjp2tkbilqea" path="res://Scenes/EldoradoCourse.tscn" id="2_x0lrv"]
+[ext_resource type="PackedScene" path="res://Scenes/EldoradoCourse.tscn" id="2_x0lrv"]
 [ext_resource type="PackedScene" uid="uid://b1u7jstr44p8f" path="res://Scenes/dock.tscn" id="3_tfxao"]
 [ext_resource type="PackedScene" uid="uid://viwfq0kos78a" path="res://Scenes/sign_post.tscn" id="4_m8rlf"]
 [ext_resource type="PackedScene" uid="uid://1x2ua3u3iv14" path="res://Scenes/npc.tscn" id="5_cgnvy"]
-[ext_resource type="PackedScene" uid="uid://cpyeojv18lg3y" path="res://Scenes/door.tscn" id="7_efode"]
-[ext_resource type="PackedScene" uid="uid://c5bbgmc3kfmy8" path="res://Scenes/destructible_rock.tscn" id="9_uwrif"]
+[ext_resource type="PackedScene" path="res://Scenes/door.tscn" id="7_efode"]
+[ext_resource type="PackedScene" path="res://Scenes/destructible_rock.tscn" id="9_uwrif"]
 [ext_resource type="PackedScene" uid="uid://delnjgsv0yk8d" path="res://Scenes/pick_up_item.tscn" id="10_wrkjl"]
-[ext_resource type="Resource" uid="uid://8yjgjnglq3mr" path="res://Resources/bombs.tres" id="11_vh8bu"]
+[ext_resource type="Resource" uid="uid://c3afvqhte2sb0" path="res://Resources/bombs.tres" id="11_vh8bu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_abjvx"]
 size = Vector2(72, 20)

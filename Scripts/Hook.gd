@@ -5,6 +5,7 @@ var hung_on_end := false
 
 func set_hook(new_can_hook):
 	can_hook = new_can_hook
+	print("can hook:", can_hook)
 
 func set_hung_on_end(hung):
 	hung_on_end = hung
