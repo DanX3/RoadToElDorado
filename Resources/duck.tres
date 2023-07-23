@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://b2dp41e2ee7bj"]
+
+[ext_resource type="Script" path="res://Scripts/item.gd" id="1_pkdh1"]
+[ext_resource type="Texture2D" uid="uid://cabfcbxw7xs2d" path="res://Assets/icon_duck.png" id="2_14cy6"]
+
+[resource]
+script = ExtResource("1_pkdh1")
+id = "duck"
+name = "Duck"
+texture = ExtResource("2_14cy6")

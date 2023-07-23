@@ -32,18 +32,21 @@ func _physics_process(delta):
 		else:
 			fsm.set_state(AnimState.RUNNING)
 	
-	if Input.is_action_pressed("rope"):
+	if Input.is_action_pressed("rope") and has_rope():
 		hook_force = hook_rotate_force * Vector2.ZERO.direction_to(hook.position).rotated(-0.5 * PI)
 		hook.apply_central_force(delta * hook_force)
 
 var hook_force = Vector2.ZERO
 
+func has_rope():
+	return PlayerInventory.contains("rope")
+
 func _input(event):
-	if Input.is_action_just_pressed("rope"):
+	if Input.is_action_just_pressed("rope") and has_rope():
 		hook.freeze = false
 		fsm.set_state(AnimState.ROPE_LAUNCH)
 	
-	if Input.is_action_just_released("rope"):
+	if Input.is_action_just_released("rope") and has_rope():
 		if hook.can_hook:
 			fsm.set_state(AnimState.ROPE_PULL)
 			var tween = create_tween()

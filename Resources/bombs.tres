@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://8yjgjnglq3mr"]
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://c3afvqhte2sb0"]
 
 [ext_resource type="Script" path="res://Scripts/item.gd" id="1_dkc8r"]
 [ext_resource type="Texture2D" uid="uid://d2edsj1yt0i7h" path="res://Assets/tiny-town.png" id="2_87bgk"]

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://c5q1fr4eksnb4"]
+
+[ext_resource type="Script" path="res://Scripts/item.gd" id="1_udi4r"]
+[ext_resource type="Texture2D" uid="uid://c87kd4e75prpy" path="res://Assets/kenney_pixel-platformer-industrial-expansion/Tiles/tile_0039.png" id="2_1tq1w"]
+
+[resource]
+script = ExtResource("1_udi4r")
+id = "rope"
+name = "Rope"
+texture = ExtResource("2_1tq1w")
