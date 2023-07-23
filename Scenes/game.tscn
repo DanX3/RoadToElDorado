@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dpcppc8vh7k0q"]
+[gd_scene load_steps=44 format=3 uid="uid://dpcppc8vh7k0q"]
 
 [ext_resource type="TileSet" uid="uid://cbap12gqoij2l" path="res://Assets/map_tileset.tres" id="1_dhidy"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_v6jmt"]
@@ -19,6 +19,8 @@
 [ext_resource type="Resource" uid="uid://cu12ahkaoj8su" path="res://Resources/SailingForDummies.tres" id="17_xuu08"]
 [ext_resource type="Shader" path="res://Assets/Smoke.gdshader" id="19_blvd2"]
 [ext_resource type="Texture2D" uid="uid://c82xt0agbu5gb" path="res://Assets/Particles/smoke_04.png" id="20_h7yqy"]
+[ext_resource type="PackedScene" uid="uid://c5bbgmc3kfmy8" path="res://Scenes/destructible_rock.tscn" id="20_iajfo"]
+[ext_resource type="Resource" uid="uid://c3afvqhte2sb0" path="res://Resources/bombs.tres" id="21_uxcga"]
 
 [sub_resource type="Animation" id="Animation_urgaw"]
 length = 0.001
@@ -152,6 +154,7 @@ position = Vector2(1251, 1293)
 rotation = 4.71239
 
 [node name="Ship" parent="." instance=ExtResource("3_fnxw5")]
+z_index = 2
 position = Vector2(1661, 2796)
 
 [node name="SignPost" parent="." instance=ExtResource("4_ifm1t")]
@@ -177,6 +180,7 @@ item = ExtResource("11_iscf4")
 [node name="PickUpItem2" parent="." instance=ExtResource("10_lvyky")]
 position = Vector2(2168, 2868)
 item = ExtResource("13_s4y5g")
+sprite_scale = Vector2(2, 2)
 
 [node name="Dock2" parent="." instance=ExtResource("2_g7yau")]
 position = Vector2(1326, 59)
@@ -251,15 +255,18 @@ shape = SubResource("RectangleShape2D_qpo7w")
 
 [node name="SignPost2" parent="." instance=ExtResource("4_ifm1t")]
 position = Vector2(4461, 788)
-message = "This wall is too steep, you should use a rope to swing past it. Hold right click to swing the rope and release to get to the hook point."
+message = "This wall is too steep, you should use a rope to swing past it.
+Hold right click to swing the rope and release to get to the hook point."
 
 [node name="SignPost3" parent="." instance=ExtResource("4_ifm1t")]
 position = Vector2(4993, 414)
-message = "Such a beatiful view!w"
+message = "Such a beatiful view!"
 
 [node name="SailingForDummies" parent="." instance=ExtResource("10_lvyky")]
-position = Vector2(5518, 905)
+position = Vector2(4817, 410)
+scale = Vector2(0.75, 0.75)
 item = ExtResource("17_xuu08")
+sprite_scale = Vector2(0.5, 0.5)
 
 [node name="Dock3" parent="." instance=ExtResource("2_g7yau")]
 position = Vector2(1709, 2794)
@@ -393,6 +400,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="DestructibleRock" parent="." instance=ExtResource("20_iajfo")]
+texture_filter = 1
+position = Vector2(4814, 412)
+
+[node name="PickUpItem3" parent="." instance=ExtResource("10_lvyky")]
+position = Vector2(5601, 895)
+item = ExtResource("21_uxcga")
+sprite_scale = Vector2(3, 3)
 
 [connection signal="body_entered" from="FogArea" to="." method="_on_fog_area_body_entered"]
 [connection signal="body_exited" from="FogArea" to="." method="_on_fog_area_body_exited"]
